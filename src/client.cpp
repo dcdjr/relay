@@ -7,21 +7,13 @@
 
 #define SERVER_PORT 5150
 
-int set_up_client_socket() {
+int connect_to_server() {
     /* Set up client TCP socket using the IPv4 protocol */
     int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
-    if (!clientSocket) {
+    if (clientSocket < 0) {
         std::cerr << "Failed to initialize client socket.\n";
         return -1;
     }
-
-    return clientSocket;
-}
-
-
-int main() {
-
-    int clientSocket = set_up_client_socket();
 
     struct sockaddr_in serverAddress = {0};
     serverAddress.sin_family = AF_INET;
@@ -40,19 +32,8 @@ int main() {
         return 1;
     }
 
-    std::string message;
-
-    while (true) {
-        std::getline(std::cin, message);
-
-        if (message == "/quit") {
-            break;
-        }
-
-        send(clientSocket, message.c_str(), message.length(), 0);
-    }
-
-    close(clientSocket);
-
-    return 0;
+    return clientSocket;
 }
+
+
+

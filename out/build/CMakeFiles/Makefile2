@@ -63,8 +63,8 @@ CMAKE_BINARY_DIR = /home/ddipi/dev/main_projects/relay/out/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/RELAY_server.dir/all
-all: CMakeFiles/RELAY_client.dir/all
+all: CMakeFiles/relay_server.dir/all
+all: CMakeFiles/relay_client.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,61 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/RELAY_server.dir/clean
-clean: CMakeFiles/RELAY_client.dir/clean
+clean: CMakeFiles/relay_server.dir/clean
+clean: CMakeFiles/relay_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/RELAY_server.dir
+# Target rules for target CMakeFiles/relay_server.dir
 
 # All Build rule for target.
-CMakeFiles/RELAY_server.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=3,4 "Built target RELAY_server"
-.PHONY : CMakeFiles/RELAY_server.dir/all
+CMakeFiles/relay_server.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=4,5,6 "Built target relay_server"
+.PHONY : CMakeFiles/relay_server.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/RELAY_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RELAY_server.dir/all
+CMakeFiles/relay_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/relay_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 0
-.PHONY : CMakeFiles/RELAY_server.dir/rule
+.PHONY : CMakeFiles/relay_server.dir/rule
 
 # Convenience name for target.
-RELAY_server: CMakeFiles/RELAY_server.dir/rule
-.PHONY : RELAY_server
+relay_server: CMakeFiles/relay_server.dir/rule
+.PHONY : relay_server
 
 # clean rule for target.
-CMakeFiles/RELAY_server.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/clean
-.PHONY : CMakeFiles/RELAY_server.dir/clean
+CMakeFiles/relay_server.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/clean
+.PHONY : CMakeFiles/relay_server.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/RELAY_client.dir
+# Target rules for target CMakeFiles/relay_client.dir
 
 # All Build rule for target.
-CMakeFiles/RELAY_client.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=1,2 "Built target RELAY_client"
-.PHONY : CMakeFiles/RELAY_client.dir/all
+CMakeFiles/relay_client.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=1,2,3 "Built target relay_client"
+.PHONY : CMakeFiles/relay_client.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/RELAY_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RELAY_client.dir/all
+CMakeFiles/relay_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/relay_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 0
-.PHONY : CMakeFiles/RELAY_client.dir/rule
+.PHONY : CMakeFiles/relay_client.dir/rule
 
 # Convenience name for target.
-RELAY_client: CMakeFiles/RELAY_client.dir/rule
-.PHONY : RELAY_client
+relay_client: CMakeFiles/relay_client.dir/rule
+.PHONY : relay_client
 
 # clean rule for target.
-CMakeFiles/RELAY_client.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/clean
-.PHONY : CMakeFiles/RELAY_client.dir/clean
+CMakeFiles/relay_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/clean
+.PHONY : CMakeFiles/relay_client.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

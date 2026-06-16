@@ -117,78 +117,126 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named RELAY_server
+# Target rules for targets named relay_server
 
 # Build rule for target.
-RELAY_server: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RELAY_server
-.PHONY : RELAY_server
+relay_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 relay_server
+.PHONY : relay_server
 
 # fast build rule for target.
-RELAY_server/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/build
-.PHONY : RELAY_server/fast
+relay_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/build
+.PHONY : relay_server/fast
 
 #=============================================================================
-# Target rules for targets named RELAY_client
+# Target rules for targets named relay_client
 
 # Build rule for target.
-RELAY_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RELAY_client
-.PHONY : RELAY_client
+relay_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 relay_client
+.PHONY : relay_client
 
 # fast build rule for target.
-RELAY_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/build
-.PHONY : RELAY_client/fast
+relay_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/build
+.PHONY : relay_client/fast
 
-client.o: client.cpp.o
-.PHONY : client.o
-
-# target to build an object file
-client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/client.cpp.o
-.PHONY : client.cpp.o
-
-client.i: client.cpp.i
-.PHONY : client.i
-
-# target to preprocess a source file
-client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/client.cpp.i
-.PHONY : client.cpp.i
-
-client.s: client.cpp.s
-.PHONY : client.s
-
-# target to generate assembly for a file
-client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_client.dir/build.make CMakeFiles/RELAY_client.dir/client.cpp.s
-.PHONY : client.cpp.s
-
-server.o: server.cpp.o
-.PHONY : server.o
+src/client.o: src/client.cpp.o
+.PHONY : src/client.o
 
 # target to build an object file
-server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/server.cpp.o
-.PHONY : server.cpp.o
+src/client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
 
-server.i: server.cpp.i
-.PHONY : server.i
+src/client.i: src/client.cpp.i
+.PHONY : src/client.i
 
 # target to preprocess a source file
-server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/server.cpp.i
-.PHONY : server.cpp.i
+src/client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
 
-server.s: server.cpp.s
-.PHONY : server.s
+src/client.s: src/client.cpp.s
+.PHONY : src/client.s
 
 # target to generate assembly for a file
-server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RELAY_server.dir/build.make CMakeFiles/RELAY_server.dir/server.cpp.s
-.PHONY : server.cpp.s
+src/client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
+
+src/client_main.o: src/client_main.cpp.o
+.PHONY : src/client_main.o
+
+# target to build an object file
+src/client_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client_main.cpp.o
+.PHONY : src/client_main.cpp.o
+
+src/client_main.i: src/client_main.cpp.i
+.PHONY : src/client_main.i
+
+# target to preprocess a source file
+src/client_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client_main.cpp.i
+.PHONY : src/client_main.cpp.i
+
+src/client_main.s: src/client_main.cpp.s
+.PHONY : src/client_main.s
+
+# target to generate assembly for a file
+src/client_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client_main.cpp.s
+.PHONY : src/client_main.cpp.s
+
+src/server.o: src/server.cpp.o
+.PHONY : src/server.o
+
+# target to build an object file
+src/server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server.cpp.o
+.PHONY : src/server.cpp.o
+
+src/server.i: src/server.cpp.i
+.PHONY : src/server.i
+
+# target to preprocess a source file
+src/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server.cpp.i
+.PHONY : src/server.cpp.i
+
+src/server.s: src/server.cpp.s
+.PHONY : src/server.s
+
+# target to generate assembly for a file
+src/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server.cpp.s
+.PHONY : src/server.cpp.s
+
+src/server_main.o: src/server_main.cpp.o
+.PHONY : src/server_main.o
+
+# target to build an object file
+src/server_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server_main.cpp.o
+.PHONY : src/server_main.cpp.o
+
+src/server_main.i: src/server_main.cpp.i
+.PHONY : src/server_main.i
+
+# target to preprocess a source file
+src/server_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server_main.cpp.i
+.PHONY : src/server_main.cpp.i
+
+src/server_main.s: src/server_main.cpp.s
+.PHONY : src/server_main.s
+
+# target to generate assembly for a file
+src/server_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/src/server_main.cpp.s
+.PHONY : src/server_main.cpp.s
 
 # Help Target
 help:
@@ -198,14 +246,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... RELAY_client"
-	@echo "... RELAY_server"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
-	@echo "... server.o"
-	@echo "... server.i"
-	@echo "... server.s"
+	@echo "... relay_client"
+	@echo "... relay_server"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
+	@echo "... src/client_main.o"
+	@echo "... src/client_main.i"
+	@echo "... src/client_main.s"
+	@echo "... src/server.o"
+	@echo "... src/server.i"
+	@echo "... src/server.s"
+	@echo "... src/server_main.o"
+	@echo "... src/server_main.i"
+	@echo "... src/server_main.s"
 .PHONY : help
 
 

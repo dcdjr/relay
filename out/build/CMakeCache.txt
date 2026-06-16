@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=RELAY
+CMAKE_PROJECT_NAME:STATIC=Relay
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -232,6 +232,15 @@ RELAY_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 RELAY_SOURCE_DIR:STATIC=/home/ddipi/dev/main_projects/relay
+
+//Value Computed by CMake
+Relay_BINARY_DIR:STATIC=/home/ddipi/dev/main_projects/relay/out/build
+
+//Value Computed by CMake
+Relay_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Relay_SOURCE_DIR:STATIC=/home/ddipi/dev/main_projects/relay
 
 
 ########################

@@ -1,4 +1,4 @@
-/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/RELAY_server.dir
-/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/RELAY_client.dir
+/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/relay_server.dir
+/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/relay_client.dir
 /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/edit_cache.dir
 /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles/rebuild_cache.dir
