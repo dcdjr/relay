@@ -29,11 +29,8 @@ int connect_to_server() {
     if (connectResult < 0) {
         std::cerr << "Client failed to connect to server.\n";
         close(clientSocket);
-        return 1;
+        return -1;
     }
 
     return clientSocket;
 }
-
-
-

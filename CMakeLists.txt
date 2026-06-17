@@ -6,9 +6,23 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_library(relay_common
+    src/common.cpp
+)
+
+target_include_directories(relay_common
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+)
+
 add_executable(relay_server
     src/server_main.cpp
     src/server.cpp
+)
+
+target_link_libraries(relay_server
+    PRIVATE
+        relay_common
 )
 
 add_executable(relay_client
@@ -16,12 +30,7 @@ add_executable(relay_client
     src/client.cpp
 )
 
-target_include_directories(relay_server
+target_link_libraries(relay_client
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
-)
-
-target_include_directories(relay_client
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
+        relay_common
 )

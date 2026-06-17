@@ -9,7 +9,7 @@
 int main() {
 
     int serverSocket = set_up_server_socket();
-    if (!serverSocket) {
+    if (serverSocket < 0) {
         std::cerr << "Failed to set up server socket.\n";
         return 1;
     }
