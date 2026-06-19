@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = /home/ddipi/dev/main_projects/relay/out/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/relay_common.dir/all
 all: CMakeFiles/relay_server.dir/all
 all: CMakeFiles/relay_client.dir/all
 .PHONY : all
@@ -72,23 +73,50 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/relay_common.dir/clean
 clean: CMakeFiles/relay_server.dir/clean
 clean: CMakeFiles/relay_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/relay_common.dir
+
+# All Build rule for target.
+CMakeFiles/relay_common.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=4,5 "Built target relay_common"
+.PHONY : CMakeFiles/relay_common.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/relay_common.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/relay_common.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 0
+.PHONY : CMakeFiles/relay_common.dir/rule
+
+# Convenience name for target.
+relay_common: CMakeFiles/relay_common.dir/rule
+.PHONY : relay_common
+
+# clean rule for target.
+CMakeFiles/relay_common.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/clean
+.PHONY : CMakeFiles/relay_common.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/relay_server.dir
 
 # All Build rule for target.
-CMakeFiles/relay_server.dir/all:
+CMakeFiles/relay_server.dir/all: CMakeFiles/relay_common.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_server.dir/build.make CMakeFiles/relay_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=4,5,6 "Built target relay_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=6,7,8 "Built target relay_server"
 .PHONY : CMakeFiles/relay_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/relay_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/relay_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 0
 .PHONY : CMakeFiles/relay_server.dir/rule
@@ -106,7 +134,7 @@ CMakeFiles/relay_server.dir/clean:
 # Target rules for target CMakeFiles/relay_client.dir
 
 # All Build rule for target.
-CMakeFiles/relay_client.dir/all:
+CMakeFiles/relay_client.dir/all: CMakeFiles/relay_common.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ddipi/dev/main_projects/relay/out/build/CMakeFiles --progress-num=1,2,3 "Built target relay_client"
@@ -114,7 +142,7 @@ CMakeFiles/relay_client.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/relay_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/relay_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ddipi/dev/main_projects/relay/out/build/CMakeFiles 0
 .PHONY : CMakeFiles/relay_client.dir/rule

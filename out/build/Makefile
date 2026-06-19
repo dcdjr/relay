@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named relay_common
+
+# Build rule for target.
+relay_common: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 relay_common
+.PHONY : relay_common
+
+# fast build rule for target.
+relay_common/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/build
+.PHONY : relay_common/fast
+
+#=============================================================================
 # Target rules for targets named relay_server
 
 # Build rule for target.
@@ -190,6 +203,30 @@ src/client_main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_client.dir/build.make CMakeFiles/relay_client.dir/src/client_main.cpp.s
 .PHONY : src/client_main.cpp.s
 
+src/common.o: src/common.cpp.o
+.PHONY : src/common.o
+
+# target to build an object file
+src/common.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/src/common.cpp.o
+.PHONY : src/common.cpp.o
+
+src/common.i: src/common.cpp.i
+.PHONY : src/common.i
+
+# target to preprocess a source file
+src/common.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/src/common.cpp.i
+.PHONY : src/common.cpp.i
+
+src/common.s: src/common.cpp.s
+.PHONY : src/common.s
+
+# target to generate assembly for a file
+src/common.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/relay_common.dir/build.make CMakeFiles/relay_common.dir/src/common.cpp.s
+.PHONY : src/common.cpp.s
+
 src/server.o: src/server.cpp.o
 .PHONY : src/server.o
 
@@ -247,6 +284,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... relay_client"
+	@echo "... relay_common"
 	@echo "... relay_server"
 	@echo "... src/client.o"
 	@echo "... src/client.i"
@@ -254,6 +292,9 @@ help:
 	@echo "... src/client_main.o"
 	@echo "... src/client_main.i"
 	@echo "... src/client_main.s"
+	@echo "... src/common.o"
+	@echo "... src/common.i"
+	@echo "... src/common.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"

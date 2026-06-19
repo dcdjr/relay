@@ -40,6 +40,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/relay_common.dir/DependInfo.cmake"
   "CMakeFiles/relay_server.dir/DependInfo.cmake"
   "CMakeFiles/relay_client.dir/DependInfo.cmake"
   )
