@@ -18,7 +18,7 @@ int connect_to_server() {
     struct sockaddr_in serverAddress = {0};
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(SERVER_PORT);
-    serverAddress.sin_addr.s_addr = INADDR_ANY;
+    inet_pton(AF_INET, "127.0.0.1", &serverAddress.sin_addr);
 
     /* Connect to server */
     int connectResult = connect(

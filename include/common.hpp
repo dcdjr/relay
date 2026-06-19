@@ -1,9 +1,14 @@
 #pragma once
 
 #include <sys/socket.h>
-#include <cstddef>
+#include <cstdint>
+
+#define MAX_MESSAGE_SIZE 4096
 
 namespace relay {
-    std::size_t send_all(int collector_fd, const char* buffer, std::size_t length);
-    bool recv_exact(int agent_fd, void* buffer, std::size_t length);
+    int32_t send_all(int socket_fd, const char* buffer, uint32_t length);
+    int32_t recv_exact(int socket_fd, void* buffer, uint32_t length);
+
+    int32_t send_message(int socket_fd, const char* buffer, uint32_t length);
+    int32_t recv_message(int socket_fd, char* buffer, uint32_t capacity);
 }

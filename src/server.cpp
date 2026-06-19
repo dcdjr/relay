@@ -3,6 +3,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <cstring>
 
 #define SERVER_PORT 5150
@@ -18,7 +19,17 @@ int set_up_server_socket() {
 
     /* Enable SO_REUSEADDR so collector OS allows the port to be reused quickly */
     int opt = 1;
-    setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    if (setsockopt(
+        serverSocket,
+        SOL_SOCKET,
+        SO_REUSEADDR,
+        &opt,
+        sizeof(opt)) == -1
+    ) {
+        std::cerr << "Could not set socket options\n";
+        close(serverSocket);
+        return -1;
+    }
 
     /* Struct to hold the server's information
        htons() converts port to network byte order
@@ -29,7 +40,11 @@ int set_up_server_socket() {
     serverAddress.sin_addr.s_addr = INADDR_ANY;
 
     /* Bind the socket to an address */
-    int bindResult = bind(serverSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
+    int bindResult = bind(
+        serverSocket,
+        (struct sockaddr*)&serverAddress,
+        sizeof(serverAddress)
+    );
     if (bindResult < 0) {
         std::cerr << "Failed to bind server socket.\n";
         ::close(serverSocket);
