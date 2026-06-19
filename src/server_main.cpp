@@ -3,6 +3,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/select.h>
+#include <vector>
+#include <cerrno>
+#include <cstring>
+#include <algorithm>
 
 #include "common.hpp"
 #include "server.hpp"
@@ -14,32 +18,92 @@ int main() {
         return 1;
     }
 
-    int clientSocket = accept(serverSocket, nullptr, nullptr);
-    if (clientSocket < 0) {
-        std::cerr << "Failed to accept client.\n";
-        close(serverSocket);
-        return 1;
-    }
-
-    std::cout << "Client connected." << std::endl;
+    std::vector<int> clients;
 
     while (true) {
-        char buffer[MAX_MESSAGE_SIZE + 1] = {0};
-        int32_t recvResult = relay::recv_message(clientSocket, buffer, sizeof(buffer));
-        
-        if (recvResult < 0) {
-            std::cerr << "There was an error receiving the message from the client." << std::endl;
-            break;
-        } else if (recvResult == 0) {
-            std::cout << "Client disconnected.\n";
-            break;
-        } else {
-            std::cout << "client> " << buffer << "\n";
+        fd_set readSet;
+        FD_ZERO(&readSet);
+
+        FD_SET(serverSocket, &readSet);
+        int maxFd = serverSocket;
+
+        for (int client : clients) {
+            FD_SET(client, &readSet);
+
+            if (client > maxFd) {
+                maxFd = client;
+            }
         }
+
+        int ready = select(maxFd + 1, &readSet, nullptr, nullptr, nullptr);
+
+        if (ready < 0) {
+            /* select() may be interrupted by a signal, which is not a fatal server error
+               in this case, we just want to try again. */
+            if (errno == EINTR) {
+                continue;
+            }
+
+            std::cerr << "select failed: " << std::strerror(errno) << "\n";
+            break;
+        }
+        
+        /* A new client wants to connect */
+        if (FD_ISSET(serverSocket, &readSet)) {
+            int newClient = accept(serverSocket, nullptr, nullptr);
+
+            if (newClient < 0) {
+                std::cerr << "Failed to accept client.\n";
+            } else {
+                clients.push_back(newClient);
+                std::cout << "Client connected: " << newClient << "\n";
+            }
+        }
+
+        std::vector<int> disconnectedClients;
+
+        for (int client : clients) {
+            if (!FD_ISSET(client, &readSet)) {
+                continue;
+            }
+
+            /* This existing client sent data or disconnected */
+            char buffer[MAX_MESSAGE_SIZE + 1] = {0};
+
+            int32_t recvResult = relay::recv_message(
+                client,
+                buffer,
+                sizeof(buffer)
+            );
+
+            if (recvResult > 0) {
+                std::cout << "client[" << client << "]> " << buffer << "\n";
+            } else if (recvResult == 0) {
+                std::cout << "Client disconnected: " << client << "\n";
+                disconnectedClients.push_back(client);
+            } else {
+                std::cerr << "Received error from client: " << client << "\n";
+                disconnectedClients.push_back(client);
+            }
+        }
+
+        for (int client : disconnectedClients) {
+            close(client);
+
+            clients.erase(
+                /* Moves all elements not equal to client toward the front */
+                std::remove(clients.begin(), clients.end(), client),
+                /* Actually deletes the unwanted leftover elements */
+                clients.end()
+            );
+        }
+    }
+
+    for (int client : clients) {
+        close(client);
     }
     
     ::close(serverSocket);
-    ::close(clientSocket);
-    
+
     return 0;
 }

@@ -22,8 +22,8 @@ int32_t relay::send_all(int socket_fd, const char* buffer, uint32_t length) {
 }
 
 int32_t relay::recv_exact(int socket_fd, void* buffer, uint32_t length) {
-    // Cast to char pointer so the buffer is offset by `received` bytes
     int32_t total_received = 0;
+    // Cast to char pointer so the buffer is offset by `received` bytes
     char* ptr = static_cast<char*>(buffer);
     while (length > 0) {
         ssize_t received = recv(socket_fd, ptr, length, 0);
