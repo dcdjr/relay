@@ -10,6 +10,9 @@
 int main() {
 
     int clientSocket = connect_to_server();
+    if (clientSocket < 0) {
+        return 1;
+    }
 
     std::string message;
 
@@ -32,6 +35,10 @@ int main() {
         }
 
         int32_t sendMessageResult = relay::send_message(clientSocket, message.c_str(), message_length);
+        if (sendMessageResult <= 0) {
+            std::cerr << "Failed to send message.\n";
+            break;
+        }
     }
 
     close(clientSocket);

@@ -30,8 +30,12 @@ int32_t relay::recv_exact(int socket_fd, void* buffer, uint32_t length) {
 
         if (received < 0) {
             return -1;
-        } else if (received == 0) {
+        } else if (received == 0 && total_received == 0) {
+            // Clean disconnect
             return 0;
+        } else if (received == 0 && total_received > 0) {
+            // Disconnected mid-message, so returns an error
+            return -1;
         }
 
         ptr += received; // Move buffer pointer forward
@@ -59,7 +63,7 @@ int32_t relay::send_message(int socket_fd, const char* buffer, uint32_t length) 
 
     int32_t message_n = relay::send_all(socket_fd, buffer, length);
     if (message_n < 0) {
-        std::cerr << "Failed to send length header.\n";
+        std::cerr << "Failed to send message payload.\n";
         return -1;
     } else if (message_n == 0) {
         return 0;

@@ -10,8 +10,16 @@
 int main() {
     /* Set up the server's socket and get its file descriptor */
     int serverSocket = set_up_server_socket();
+    if (serverSocket < 0) {
+        return 1;
+    }
 
     int clientSocket = accept(serverSocket, nullptr, nullptr);
+    if (clientSocket < 0) {
+        std::cerr << "Failed to accept client.\n";
+        close(serverSocket);
+        return 1;
+    }
 
     std::cout << "Client connected." << std::endl;
 
