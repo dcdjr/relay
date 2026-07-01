@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <sys/select.h>
 #include <algorithm>
+#include <cerrno>
 
 #include "client.hpp"
 #include "common.hpp"
@@ -35,6 +36,10 @@ int main() {
         );
 
         if (ready < 0) {
+            if (errno == EINTR) {
+                continue;
+            }
+
             std::cerr << "select failed.\n";
             break;
         }

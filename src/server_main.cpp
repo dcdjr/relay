@@ -11,6 +11,17 @@
 #include "common.hpp"
 #include "server.hpp"
 
+static bool in_disconnected_clients(
+    int client,
+    const std::vector<int>& disconnectedClients
+) {
+    return std::find(
+        disconnectedClients.begin(),
+        disconnectedClients.end(),
+        client
+    ) != disconnectedClients.end();
+}
+
 int main() {
     /* Set up the server's socket and get its file descriptor */
     int serverSocket = set_up_server_socket();
@@ -88,17 +99,28 @@ int main() {
                     );
 
                     if (broadcast_result < 0) {
-                        std::cerr << "Failed to broadcast message: " << buffer << " to client: " << recipient << "\n";
+                        std::cerr
+                            << "Failed to broadcast message to client: "
+                            << recipient
+                            << "\n";
+
+                        if (!in_disconnected_clients(recipient, disconnectedClients)) {
+                            disconnectedClients.push_back(recipient);
+                        }
                     } else if (broadcast_result == 0) {
                         std::cout << "Client " << client << " disconnected.\n";
                     }
                 }
             } else if (recvResult == 0) {
                 std::cout << "Client disconnected: " << client << "\n";
-                disconnectedClients.push_back(client);
+                if (!in_disconnected_clients(client, disconnectedClients)) {
+                    disconnectedClients.push_back(client);
+                }
             } else {
                 std::cerr << "Received error from client: " << client << "\n";
-                disconnectedClients.push_back(client);
+                if (!in_disconnected_clients(client, disconnectedClients)) {
+                    disconnectedClients.push_back(client);
+                }
             }
         }
 

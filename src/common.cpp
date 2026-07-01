@@ -10,7 +10,12 @@ int32_t relay::send_all(int socket_fd, const char* buffer, uint32_t length) {
 
     while (total_sent < length) {
         // Offset the buffer pointer by the number of bytes already sent
-        n = send(socket_fd, buffer + total_sent, bytes_remaining, 0);
+        n = send(
+            socket_fd,
+            buffer + total_sent,
+            bytes_remaining,
+            MSG_NOSIGNAL
+        );
 
         if (n <= 0) return -1;
 
