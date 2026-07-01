@@ -78,6 +78,21 @@ int main() {
 
             if (recvResult > 0) {
                 std::cout << "client[" << client << "]> " << buffer << "\n";
+                // Broadcast message to other clients
+                for (int recipient : clients) {
+                    if (recipient == client) continue;
+                    int broadcast_result = relay::send_message(
+                        recipient,
+                        buffer,
+                        static_cast<uint32_t>(recvResult)
+                    );
+
+                    if (broadcast_result < 0) {
+                        std::cerr << "Failed to broadcast message: " << buffer << " to client: " << recipient << "\n";
+                    } else if (broadcast_result == 0) {
+                        std::cout << "Client " << client << " disconnected.\n";
+                    }
+                }
             } else if (recvResult == 0) {
                 std::cout << "Client disconnected: " << client << "\n";
                 disconnectedClients.push_back(client);
